@@ -39,3 +39,7 @@ This works equally well with a Google Form export and a PDF of your question/rub
 3. **Upload to Knowledge** — Swap the knowledge file in the Gem settings to your new curriculum document.
 
 The grading format, feedback philosophy, and linking conventions in the prompt are subject-agnostic and should work as-is.
+
+## License
+
+This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
