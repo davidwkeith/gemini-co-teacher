@@ -1,0 +1,751 @@
+"student_name","part_a_code","part_b_answer"
+"Aisha Johnson","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self._breed = breed
+
+    def is_senior(self):
+        return self._age >= 8
+
+    def __str__(self):
+        base = super().__str__()
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{base} — {self._breed}{tag}""
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        self._indoor = indoor
+
+    def is_senior(self):
+        return self._age >= 10
+
+    def __str__(self):
+        base = super().__str__()
+        location = ""Indoor"" if self._indoor else ""Outdoor""
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{base} — {location}{tag}""
+","This is polymorphism. Both Dog and Cat inherit from Animal and each provides its own implementation of is_senior(). When adoption_candidates calls a.is_senior(), Python looks at the actual runtime type of the object and dispatches to the correct version automatically. That's why the function works on a mixed list without any isinstance checks — it just calls the shared method and lets each class handle the logic."
+"Marcus Chen","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self._breed = breed
+
+    def is_senior(self):
+        return self._age >= 8
+
+    def __str__(self):
+        base = super().__str__()
+        senior_tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{base} — {self._breed}{senior_tag}""
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        self._indoor = indoor
+
+    def is_senior(self):
+        return self._age >= 10
+
+    def __str__(self):
+        base = super().__str__()
+        label = ""Indoor"" if self._indoor else ""Outdoor""
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{base} — {label}{tag}""
+","The principle is polymorphism. Each subclass overrides is_senior() with its own threshold (8 for dogs, 10 for cats), but because both classes share the Animal interface, the adoption_candidates function can call is_senior() on any element without knowing what type it is. Python resolves which method to run at runtime based on the object's actual class. This also means if you added a Rabbit class in the future with a different threshold, the function would still work without any changes."
+"Destiny Robinson","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self._breed = breed
+
+    def is_senior(self):
+        return self._age >= 8
+
+    def __str__(self):
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{super().__str__()} — {self._breed}{tag}""
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        self._indoor = indoor
+
+    def is_senior(self):
+        return self._age >= 10
+
+    def __str__(self):
+        loc = ""Indoor"" if self._indoor else ""Outdoor""
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{super().__str__()} — {loc}{tag}""
+","Polymorphism makes this work. Dog and Cat each override is_senior() differently, but since both are Animal subclasses, the function treats them the same way through the shared interface. Python dispatches to the right is_senior() at runtime depending on what kind of object it actually is. The function doesn't care about the different thresholds — each class manages its own logic internally."
+"Sofia Rodriguez","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self._breed = breed
+
+    def is_senior(self):
+        return self._age >= 8
+
+    def __str__(self):
+        base = super().__str__()
+        if self.is_senior():
+            return f""{base} — {self._breed} [Senior]""
+        return f""{base} — {self._breed}""
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        self._indoor = indoor
+
+    def is_senior(self):
+        return self._age >= 10
+
+    def __str__(self):
+        base = super().__str__()
+        loc = ""Indoor"" if self._indoor else ""Outdoor""
+        if self.is_senior():
+            return f""{base} — {loc} [Senior]""
+        return f""{base} — {loc}""
+","This is polymorphism. Even though Dog uses 8 and Cat uses 10 as the senior threshold, both classes share the is_senior() method name. Python knows at runtime which version to call based on the object's type, so the function works correctly on both without any type-checking."
+"Tyler Washington","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self._breed = breed
+
+    def is_senior(self):
+        if self._age >= 8:
+            return True
+        return False
+
+    def __str__(self):
+        base = super().__str__()
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{base} — {self._breed}{tag}""
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        self._indoor = indoor
+
+    def is_senior(self):
+        if self._age >= 10:
+            return True
+        return False
+
+    def __str__(self):
+        base = super().__str__()
+        location = ""Indoor"" if self._indoor else ""Outdoor""
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{base} — {location}{tag}""
+","The OOP principle is polymorphism. The function calls is_senior() on each animal and Python runs the correct version depending on whether it is a Dog or Cat. This is why it works even though the thresholds are different — each class handles the details and the function just uses the shared interface."
+"Priya Patel","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self._breed = breed
+
+    def is_senior(self):
+        return self._age >= 8
+
+    def __str__(self):
+        base = super().__str__()
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{base} — {self._breed}{tag}""
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        self._indoor = indoor
+
+    def is_senior(self):
+        return self._age >= 10
+
+    def __str__(self):
+        base = super().__str__()
+        label = ""Indoor"" if self._indoor else ""Outdoor""
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{base} — {label}{tag}""
+","Polymorphism. The function doesn't need isinstance checks because every Animal subclass is guaranteed to have is_senior(). Python figures out at runtime which version to use. Dog and Cat handle their own logic so the function stays clean and general."
+"Omar Khalil","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self._breed = breed
+
+    def is_senior(self):
+        return self._age > 8
+
+    def __str__(self):
+        base = super().__str__()
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{base} — {self._breed}{tag}""
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        self._indoor = indoor
+
+    def is_senior(self):
+        return self._age > 10
+
+    def __str__(self):
+        base = super().__str__()
+        loc = ""Indoor"" if self._indoor else ""Outdoor""
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{base} — {loc}{tag}""
+","This is polymorphism. Each subclass overrides is_senior() with different logic but the function doesn't care because it just calls the method on each animal. Python dispatches to the right one at runtime."
+"Jake Thompson","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self._breed = breed
+
+    def is_senior(self):
+        return self._age >= 8
+
+    def __str__(self):
+        base = super().__str__()
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{base} - {self._breed}{tag}""
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        self._indoor = indoor
+
+    def is_senior(self):
+        return self._age >= 10
+
+    def __str__(self):
+        base = super().__str__()
+        loc = ""Indoor"" if self._indoor else ""Outdoor""
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{base} - {loc}{tag}""
+","Polymorphism makes this possible. Both Dog and Cat implement is_senior() but with different thresholds. The function just calls it on each animal and Python runs the right version. It would keep working if you added more animal types too."
+"Fatima Al-Hassan","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self._breed = breed
+
+    def is_senior(self):
+        return self._age >= 8
+
+    def __str__(self):
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return super().__str__() + f"" — {self._breed}{tag}""
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        self._indoor = indoor
+
+    def is_senior(self):
+        return self._age >= 10
+
+    def __str__(self):
+        loc = ""Indoor"" if self._indoor else ""Outdoor""
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return super().__str__() + f"" — {loc}{tag}""
+","The principle is polymorphism. Both classes override is_senior() and Python dispatches to the right one at runtime based on the actual object type. The function doesn't need to distinguish between Dog and Cat objects."
+"Mia Nakamura","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self._breed = breed
+
+    def is_senior(self):
+        return self._age >= 8
+
+    def __str__(self):
+        if self.is_senior():
+            return f""{self._name} (age {self._age}) — {self._breed} [Senior]""
+        return f""{self._name} (age {self._age}) — {self._breed}""
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        self._indoor = indoor
+
+    def is_senior(self):
+        return self._age >= 10
+
+    def __str__(self):
+        loc = ""Indoor"" if self._indoor else ""Outdoor""
+        if self.is_senior():
+            return f""{self._name} (age {self._age}) — {loc} [Senior]""
+        return f""{self._name} (age {self._age}) — {loc}""
+","This is polymorphism. The function works because both classes have is_senior() and Python knows which one to call based on the object type. The different thresholds are handled inside each class."
+"Carlos Mendez","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self._breed = breed
+
+    def is_senior(self):
+        return self._age >= 8
+
+    def __str__(self):
+        base = super().__str__()
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{base} — {self._breed}{tag}""
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        self._indoor = indoor
+
+    def is_senior(self):
+        return self._age >= 10
+
+    def __str__(self):
+        where = ""Indoor"" if self._indoor else ""Outdoor""
+        # forgot senior tag
+        return f""{super().__str__()} — {where}""
+","Polymorphism. When you call is_senior() on different animal types, Python runs the right version for each. That's how the function handles a mixed list correctly."
+"Emma Williams","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self._breed = breed
+
+    def is_senior(self):
+        return self._age >= 8
+
+    def __str__(self):
+        base = super().__str__()
+        senior = "" [Senior]"" if self.is_senior() else """"
+        return f""{base} — {self._breed}{senior}""
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        self._indoor = indoor
+
+    def is_senior(self):
+        return self._age >= 10
+
+    def __str__(self):
+        base = super().__str__()
+        loc = ""Indoor"" if self._indoor else ""Outdoor""
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{base} — {loc}{tag}""
+","The OOP principle is abstraction. The function hides the details of how each class works and just uses the shared interface. Because all animals have is_senior(), the function works without caring about the type."
+"Jaylen Brooks","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self._breed = breed
+
+    def is_senior(self):
+        return self._age >= 8
+
+    def __str__(self):
+        base = super().__str__()
+        return f""{base} — {self._breed} [Senior]""
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        self._indoor = indoor
+
+    def is_senior(self):
+        return self._age >= 10
+
+    def __str__(self):
+        base = super().__str__()
+        loc = ""Indoor"" if self._indoor else ""Outdoor""
+        return f""{base} — {loc} [Senior]""
+","This is polymorphism. The function can call is_senior() on any Animal object and Python handles which version to run. The different thresholds for dogs and cats are hidden inside each class."
+"Noah Kim","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self.breed = breed
+
+    def is_senior(self):
+        return self._age >= 8
+
+    def __str__(self):
+        base = super().__str__()
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{base} — {self.breed}{tag}""
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        self.indoor = indoor
+
+    def is_senior(self):
+        return self._age >= 10
+
+    def __str__(self):
+        base = super().__str__()
+        loc = ""Indoor"" if self.indoor else ""Outdoor""
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{base} — {loc}{tag}""
+","Polymorphism. Both classes override is_senior() with different logic, but they share the same method name from Animal. The function calls it generically and Python routes to the right one at runtime."
+"Hannah Szabo","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self._breed = breed
+
+    def is_senior(self):
+        return self.age >= 8
+
+    def __str__(self):
+        base = super().__str__()
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{base} — {self._breed}{tag}""
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        self._indoor = indoor
+
+    def is_senior(self):
+        return self.age >= 10
+
+    def __str__(self):
+        base = super().__str__()
+        s = ""Indoor"" if self._indoor else ""Outdoor""
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{base} — {s}{tag}""
+","Polymorphism makes this work. Each subclass has its own is_senior() and Python calls the right one. The function just relies on the shared Animal interface."
+"Leila Okonkwo","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self._breed = breed
+
+    def is_senior(self):
+        return self._age >= 8
+
+    def __str__(self):
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{self._name} (age {self._age}) — {self._breed}{tag}""
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        self._indoor = indoor
+
+    def is_senior(self):
+        return self._age >= 10
+
+    def __str__(self):
+        loc = ""Indoor"" if self._indoor else ""Outdoor""
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{self._name} (age {self._age}) — {loc}{tag}""
+","This is polymorphism. Dog and Cat define is_senior() differently but the function treats them the same. Python dispatches to the right method."
+"Ryan Martinez","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        self._name = name
+        self._age = age
+        self._breed = breed
+
+    def is_senior(self):
+        return self._age >= 8
+
+    def __str__(self):
+        base = super().__str__()
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{base} — {self._breed}{tag}""
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        self._name = name
+        self._age = age
+        self._indoor = indoor
+
+    def is_senior(self):
+        return self._age >= 10
+
+    def __str__(self):
+        base = super().__str__()
+        loc = ""Indoor"" if self._indoor else ""Outdoor""
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{base} — {loc}{tag}""
+","Polymorphism. The function calls is_senior() on each animal and Python runs the right version. It doesn't matter that the thresholds are different because each class handles that logic itself."
+"Zoe Chen","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self._breed = breed
+
+    def is_senior(self):
+        return self._age >= 8
+
+    def __str__(self):
+        base = super().__str__()
+        return f""{base} — {self._breed}""
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        self._indoor = indoor
+
+    def is_senior(self):
+        return self._age >= 10
+
+    def __str__(self):
+        base = super().__str__()
+        loc = ""Indoor"" if self._indoor else ""Outdoor""
+        return f""{base} — {loc}""
+","Polymorphism. Dog and Cat both have is_senior() so the function can call it on either type."
+"Devon Clarke","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self._breed = breed
+
+    def is_senior(self):
+        return self._age >= 8
+
+    def __str__(self):
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""Dog: {self._name}, age {self._age}, {self._breed}{tag}""
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        self._indoor = indoor
+
+    def is_senior(self):
+        return self._age >= 10
+
+    def __str__(self):
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""Cat: {self._name}, age {self._age}, {self._indoor}{tag}""
+","I think it's polymorphism or maybe encapsulation. The function works because both classes come from Animal and have the same method names."
+"Amara Diallo","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self._breed = breed
+
+    def is_senior(self):
+        if self._age > 8:
+            return True
+        else:
+            return False
+
+    def __str__(self):
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{self._name} (age {self._age}) — {self._breed}{tag}""
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        self._indoor = indoor
+
+    def is_senior(self):
+        if self._age > 10:
+            return True
+        else:
+            return False
+
+    def __str__(self):
+        indoor_str = ""Indoor"" if self._indoor else ""Outdoor""
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{self._name} (age {self._age}) — {indoor_str}{tag}""
+","Inheritance makes this possible. Dog and Cat both inherit is_senior from Animal so the function can call it on any animal in the list."
+"Sam Kowalski","class Dog(Animal):
+    breed = """"
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        Dog.breed = breed
+
+    def is_senior(self):
+        return self._age >= 8
+
+    def __str__(self):
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{super().__str__()} — {Dog.breed}{tag}""
+
+class Cat(Animal):
+    indoor = False
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        Cat.indoor = indoor
+
+    def is_senior(self):
+        return self._age >= 10
+
+    def __str__(self):
+        loc = ""Indoor"" if Cat.indoor else ""Outdoor""
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return f""{super().__str__()} — {loc}{tag}""
+","Polymorphism. Python automatically picks the right is_senior method at runtime so the function doesn't need any if statements to check what type of animal it is."
+"Isabella Torres","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        self.name = name
+        self.age = age
+        self.breed = breed
+
+    def is_senior(self):
+        return self.age >= 8
+
+    def __str__(self):
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return self.name + "" (age "" + str(self.age) + "") — "" + self.breed + tag
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        self.name = name
+        self.age = age
+        self.indoor = indoor
+
+    def is_senior(self):
+        return self.age >= 10
+
+    def __str__(self):
+        loc = ""Indoor"" if self.indoor else ""Outdoor""
+        tag = "" [Senior]"" if self.is_senior() else """"
+        return self.name + "" (age "" + str(self.age) + "") — "" + loc + tag
+","Because of polymorphism the function can call the same method on different types and get the right answer each time."
+"Kai Yamamoto","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self._breed = breed
+
+    def is_senior(self):
+        return self._age >= 8
+
+    def __str__(self):
+        base = super().__str__()
+        if self._age >= 8:
+            return f""{base} — {self._breed} [Senior]""
+        else:
+            return f""{base} — {self._breed}""
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        self._indoor = indoor
+
+    def is_senior(self):
+        return self._age >= 10
+
+    def __str__(self):
+        base = super().__str__()
+        loc = ""Indoor"" if self._indoor else ""Outdoor""
+        if self._age >= 10:
+            return f""{base} — {loc} [Senior]""
+        else:
+            return f""{base} — {loc}""
+","This is polymorphism. It works because all Animal subclasses implement is_senior() and Python calls the right one."
+"Jordan Lee","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self._breed = breed
+
+    def is_senior(self):
+        return self._age >= 8
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        self._indoor = indoor
+
+    def is_senior(self):
+        return self._age >= 10
+","Because of OOP. All animals come from Animal so the function works on all of them."
+"Maya Gupta","class Dog(Animal):
+    breed = """"
+    def __init__(self, name, age, breed):
+        name = name
+        age = age
+        breed = breed
+
+    def is_senior(self):
+        return age >= 8
+
+    def __str__(self):
+        return name + "" — "" + breed
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        name = name
+        age = age
+        indoor = indoor
+
+    def is_senior(self):
+        return age >= 10
+
+    def __str__(self):
+        return name + "" "" + str(indoor)
+","Because of inheritance and stuff. They all have is_senior so it works."
+"Ethan Park","class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self._breed = breed
+
+    def is_senior(self):
+        return self._age >= 8
+
+    def __str__(self):
+        return f""{self._name} {self._breed}""
+
+class Cat(Animal):
+    def __init__(self, name, age, indoor):
+        super().__init__(name, age)
+        self._indoor = indoor
+
+    def is_senior(self):
+        return self._age >= 10
+
+    def __str__(self):
+        return f""{self._name} {self._indoor}""
+","Encapsulation. The data is stored inside each class so the function can use it without knowing the details."
+"Aaliyah Davis","class Dog(Animal):
+    def __init__(self):
+        self.name = ""Dog""
+        self.age = 0
+        self.breed = ""unknown""
+
+    def is_senior(self):
+        return False
+
+class Cat(Animal):
+    def __init__(self):
+        self.name = ""Cat""
+        self.age = 0
+
+    def is_senior(self):
+        return False
+","Because they all come from Animal and have the same methods."
+"Lucas Ferreira","class Dog():
+    def __init__(self, name, age, breed):
+        self.name = name
+        self.age = age
+        self.breed = breed
+
+    def is_senior(self):
+        print(""yes"" if self.age > 8 else ""no"")
+
+class Cat():
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def is_senior(self):
+        print(""yes"" if self.age > 10 else ""no"")
+","OOP principle."
+"Nadia Petrov","class Dog(Animal):
+    def __init__(self):
+        pass
+    def is_senior():
+        return True
+
+class Cat(Animal):
+    def __init__(self):
+        pass
+    def is_senior():
+        return True
+",""
+"Caleb Murphy","class Dog extends Animal:
+    def __init__(self, name, age, breed):
+        super(name, age)
+        self.breed = breed
+
+    def is_senior(self):
+        if age > 8:
+            return true
+
+class Cat extends Animal:
+    def __init__(self, name, age, indoor):
+        super(name, age)
+        self.indoor = indoor
+
+    def is_senior(self):
+        if age > 10:
+            return true
+","It works because of inheritance I think"
